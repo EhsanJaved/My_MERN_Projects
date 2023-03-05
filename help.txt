@@ -1,0 +1,22 @@
+select  *  from order_items INNER JOIN products ON order_items.product_id =  products.id 
+
+
+const [formData,setFormData ] = useState({});
+
+const handleChange = (e) =>{
+  setFormData({
+       ...formData , 
+        [e.target.name] : e.target.value
+})
+}
+
+return {
+   
+
+<input value={formData.name} handleChange={(event)=> setFormData({...formData , first_name : event.target.value })} /> 
+
+<input value={formData.name} name="first_name" onChange={ handleChnage} /> 
+
+<button onClick={onSubmit} /> 
+
+}
