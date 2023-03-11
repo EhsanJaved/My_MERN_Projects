@@ -11,7 +11,6 @@ const SelfOrderSchema =new Schema({
 timestemps: true
 });
 
-
 const SelfOrder = new mongoose.model("SelfOrder", SelfOrderSchema);
 
 module.export = SelfOrder;
