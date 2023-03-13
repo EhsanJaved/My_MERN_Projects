@@ -11,7 +11,7 @@ const CostumerOrderSchema =new Schema({
     CostumerPostalAddress:{type:Number, requried: true},
     CostumerOrder:{type: Array, requried: true}
 },
-{
+{ 
     timestemps: true
 })
 

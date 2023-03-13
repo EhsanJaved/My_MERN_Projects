@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import pro1 from "../iconsAndImages/product11.jpg";
 
 import axios from "axios";
-import { Button, Row, Col, Card, Form, Modal, Toast } from "react-bootstrap";
+import { Button, Row, Col, Card, Form, Modal } from "react-bootstrap";
 export default function Products() {
   const [show, setShow] = useState(false);
 

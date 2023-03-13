@@ -11,14 +11,13 @@ export default function CostumerRegister() {
     WebkitBackdropFilter: "blur(5px)",
     border: "1px solid rgba(89, 51, 192, 0.3)"
   }
-  const modulback = {
-background: "rgba(99, 60, 205, 0)",
-borderRadius: "16px",
-boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
-backdropFilter: "blur(0px)",
-WebkitBackdropFilter: "blur(0px)",
-
-  }
+//   const modulback = {
+// background: "rgba(99, 60, 205, 0)",
+// borderRadius: "16px",
+// boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
+// backdropFilter: "blur(0px)",
+// WebkitBackdropFilter: "blur(0px)",
+//   }
   
   return (
     <>
@@ -59,10 +58,7 @@ WebkitBackdropFilter: "blur(0px)",
     </div>
   </div>
 </div>
-
 </div>
-
-
     {/* Module 1 */}
     <div className="modal fade" id="CostumerRegister" tabindex="-1" aria-labelledby="CostumerRegister" aria-hidden="true">
   <div className="modal-dialog card">
@@ -155,7 +151,6 @@ WebkitBackdropFilter: "blur(0px)",
                     </div>
                   </div>
                 </th>
-                
                 <td className="align-middle border-bottom-0">
                   <div className="d-flex flex-row">
                     <button className="btn btn-link px-2"  onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
@@ -182,8 +177,6 @@ WebkitBackdropFilter: "blur(0px)",
         <div className="container  mb-5 mb-lg-0" >
           <div className="card-body p-4">
             <div className="row">
-              
-              
               <div className="col-lg-4 col-xl-3">
                 <div className="d-flex justify-content-between" >
                   <p className="mb-2 fw-bold">Subtotal</p>
@@ -215,9 +208,6 @@ WebkitBackdropFilter: "blur(0px)",
   </div>
 </div>
      </div>
-    
     </>
-
   )
 }
-

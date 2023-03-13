@@ -2,7 +2,8 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const SelfOrderSchema =new Schema({
-    CostumerName:{type: String, minLength: 4, requried: true},
+    CostumerFirstName:{type: String, minLength: 2, requried: true},
+    CostumerSecondName:{type: String, minLength: 2, requried: true},
     CostumerCell:{type:Number, requried: true},
     CostumerEmail:{type: String},
     CostumerAddress:{type: String},
