@@ -13,7 +13,7 @@ import Records from "./Records";
 
 // page title changer
 export default function MenuBar(props) {
-const [divHeader, setdivHeader] = useState('Wellcome ')
+const [divHeader, setdivHeader] = useState('Welcome')
 const createDetails = ()=>{  setdivHeader("Enter Customer's Details:") }
 const homeDetails = ()=>{setdivHeader("Home")}
 const productDetails = ()=>{setdivHeader("Products")}

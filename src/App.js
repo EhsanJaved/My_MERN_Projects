@@ -1,14 +1,16 @@
 import './App.css';
+import CostumerOrder from './components/CostumerOrder.component';
 // import PublicPage from './components/PublicPage';
 // import { BrowserRouter as Router, Switch, Route, Redirect,} from "react-router-dom";
-import mainLogo from'./iconsAndImages/logoHN.png';
+// import mainLogo from'./iconsAndImages/logoHN.png';
 // import MenuBar from './components/MenuBar';
-import PublicPage from './components/PublicPage';
+// import PublicPage from './components/PublicPage';
 // import LoginPage from './components/LoginPage'
 function App(){
   return(
   <>
-  <PublicPage/>
+<CostumerOrder/>
+  {/* <PublicPage/> */}
     {/* <MenuBar Logo={mainLogo} /> */}
 {/* <LoginPage Logo={mainLogo}/> */}
   </>
