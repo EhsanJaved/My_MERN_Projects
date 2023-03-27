@@ -7,10 +7,10 @@ export default function InvoiceMaker() {
   const [Costumerdetails, setCostumerdetails] = useState([{
     Fname: "",
     Lname: "",
-    number: 0,
+    Cell: 0,
     email: "",
     address: "",
-    order: [{name:"",number:0}]
+    order: []
   }]);
   const [fields, setFields] = useState([]);
   
@@ -18,25 +18,35 @@ export default function InvoiceMaker() {
     setFields([...fields, { name: "", number: 0 }]);
   };
 
+  // const handleInputChange = (event) => {
+  //   const { name, value } = event.target;
+  //   setCostumerdetails([{ ...customerDetails[0], [name]: value }]);
+  // };
+  
   const handleSubmit = (e) => {
     e.preventDefault();
-    // setCostumerdetails.order(fields);
+    // Costumerdetails.join(", ")
+
     console.log(fields,Costumerdetails);
+
+
+
   };
 
   const onChange = (event) => {
-    setCostumerdetails({
-      ...Costumerdetails,
-      [event.target.name]: event.target.value,
-    });
+const { name, value } = event.target;
+setCostumerdetails([{ ...Costumerdetails[0], [name]: value }]);
   };
+  // const arraychange = (eve) =>{
+  //   const { name, value } = eve.target;
+  //   setCostumerdetails([{ ...Costumerdetails.order[0], [name]: value }]);
+  // } 
 
   function handleDeleteField(index) {
     const newFields = [...fields];
     newFields.splice(index, 1);
     setFields(newFields);
   }
-  // const [Costumerdetails, setCostumerdetails] = useState([]);
   const [prod, setprod] = useState([]);
   useEffect(() => {
     // Make a GET request to the backend API
@@ -67,22 +77,11 @@ export default function InvoiceMaker() {
                 </label>
                 <input
                 value={Costumerdetails.Fname}
-                  // name="item_name[]"
-                  type="Fname"
+                  type="text"
+                  name="Fname"
                   className="form-control"
-                  // id="input"
-
-                  // setCostumerdetails({
-                  //   ...Costumerdetails,
-                  //   [event.target.name]: event.target.value,
-                  // });
-
+                  id="Fname"
                   onChange={onChange}
-                  // onChange={(e)=>{
-                  //   setCostumerdetails([{
-                  //     Fname: e.target.value
-                  //   }])
-                  // }}
                   aria-describedby="emailHelp"
                 />
               </div>
@@ -92,17 +91,11 @@ export default function InvoiceMaker() {
                 <h4>Second Name:</h4>
               </label>
               <input 
-              type="Lname"
+              type="text"
               name="Lname"
               id="Lname"
                className="form-control"
                onChange={onChange}
-                // onChange={(e)=>{
-                  //   setCostumerdetails({
-                  //     ...Costumerdetails,
-                  //     Lname: e.target.value
-                  //   })
-                  // }}
                    />
             </Col>
           </Row>
@@ -113,13 +106,12 @@ export default function InvoiceMaker() {
                   <h4>Cell Number:</h4>
                 </label>
                 <input
-                // onChange={(eve)=>{
-                //   setCostumerdetails(eve.target.value)
-                // }}
+                value={Costumerdetails.cell}
                 onChange={onChange}
-                  type="Name"
+                  type="text"
+                  id="Cell"
+                  name="Cell"
                   className="form-control"
-                  id="exampleInputEmail1"
                   aria-describedby="emailHelp"
                 />
               </div>
@@ -130,9 +122,10 @@ export default function InvoiceMaker() {
                   <h4>Email Adderss:</h4>
                 </label>
                 <input
-                  type="Name"
+                name="email"
+                id="email"
+                  type="email"
                   className="form-control"
-                  id="exampleInputEmail1"
                   aria-describedby="emailHelp"
                   onChange={onChange}
                 />
@@ -145,9 +138,10 @@ export default function InvoiceMaker() {
               <h4>Adderss:</h4>
             </label>
             <input
-              type="Name"
+              id="address"
+              name="address"
+              type="text"
               className="form-control"
-              id="exampleInputEmail1"
               aria-describedby="emailHelp"
               onChange={onChange}
             />
@@ -181,10 +175,15 @@ export default function InvoiceMaker() {
                           <td>
                             <input
                               className="form-control"
+                              //  //  //
+                              id="order"
+                              type="text"
+                              // name="order"
+                              //  //  //
                               list="datalistOptions"
-                              id="DataList"
-                              type="name"
+                              // id="DataList"
                               name="item_name[]"
+                              // value={Costumerdetails[0].order[0].name}
                               value={field.name}
                               onChange={(event) => {
                                 const list = [...fields];
@@ -199,6 +198,7 @@ export default function InvoiceMaker() {
                           </td>
                           <td>
                             <input
+                            // value={Costumerdetails[0].order[0].number}
                               value={field.number}
                               type="number"
                               onChange={(e) => {
