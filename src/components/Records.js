@@ -40,12 +40,12 @@ const onClickBTN1SUB =()=> {
     {/* tabs start */}
   <ul class="nav nav-tabs" id="myTab" role="tablist">
     {/* 1 */}
-  <li class="nav-item" role="presentation">
-    <button class="nav-link active fw-bold" id="home-tab1" data-bs-toggle="tab" data-bs-target="#home-tab-pane1" type="button" role="tab" aria-controls="home-tab-pane1" aria-selected="true">Custom Invoice</button>
+  <li to ="/CustomInvoice" class="nav-item" role="presentation">
+    <button to ="/CustomInvoice" class="nav-link active fw-bold" id="home-tab1" data-bs-toggle="tab" data-bs-target="#home-tab-pane1" type="button" role="tab" aria-controls="home-tab-pane1" aria-selected="true">Custom Invoice</button>
   </li>
   {/* 2 */}
-  <li class="nav-item" role="presentation">
-    <button class="nav-link fw-bold" id="contact-tab2" data-bs-toggle="tab" data-bs-target="#contact-tab-pane2" type="button" role="tab" aria-controls="contact-tab-pane2" aria-selected="false">Invoice</button>
+  <li to ="/CustomInvoice" class="nav-item" role="presentation">
+    <button to ="/CustomInvoice" class="nav-link fw-bold" id="contact-tab2" data-bs-toggle="tab" data-bs-target="#contact-tab-pane2" type="button" role="tab" aria-controls="contact-tab-pane2" aria-selected="false">Invoice</button>
   </li>
   {/* 3 */}
   <li class="nav-item" role="presentation">
@@ -53,6 +53,7 @@ const onClickBTN1SUB =()=> {
   </li>
 </ul>
     {/* tabs end */}
+
     {/* data start of 1 */}
 <div class="tab-content" id="myTabContent">
   <div class="tab-pane fade show active" id="home-tab-pane1" role="tabpanel" aria-labelledby="home-tab1" tabindex="0">
@@ -97,6 +98,7 @@ const onClickBTN1SUB =()=> {
 </div> 
     </div>
     {/* data end of 1 */}
+
     {/* data start of 2 */}
   <div class="tab-pane fade" id="contact-tab-pane2" role="tabpanel" aria-labelledby="contact-tab2" tabindex="0">
     <h2 className='mx-2'></h2>

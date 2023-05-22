@@ -2,51 +2,63 @@ import React, { useState, useEffect } from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import axios from "axios";
+// proble solved need to add css 
 export default function InvoiceMaker() {
   
-  const [Costumerdetails, setCostumerdetails] = useState([{
+  const handlesubmit = async (event) => {
+    event.preventDefault();
+    console.log(customerDetails)
+    try {
+      // Send a POST request to the server to create a new customer
+      await axios.post('/customers', customerDetails);
+      alert('Customer created');
+    } catch (error) {
+      console.log(error);
+      alert('Error creating customer');
+    }
+  };
+
+
+ 
+
+   const [customerDetails, setCustomerDetails] = useState({
     Fname: "",
     Lname: "",
-    Cell: 0,
+    number: 0,
     email: "",
     address: "",
-    order: []
-  }]);
-  const [fields, setFields] = useState([]);
-  
-  const handleAddField = () => {
-    setFields([...fields, { name: "", number: 0 }]);
+    orders: [{ name: "", number: 0 }]
+  });
+
+  const handleOrderChange = (index, event) => {
+    const { name, value } = event.target;
+    const orders = [...customerDetails.orders];
+    orders[index][name] = value;
+    setCustomerDetails(prevState => ({
+      ...prevState,
+      orders
+    }));
   };
 
-  // const handleInputChange = (event) => {
-  //   const { name, value } = event.target;
-  //   setCostumerdetails([{ ...customerDetails[0], [name]: value }]);
-  // };
-  
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Costumerdetails.join(", ")
-
-    console.log(fields,Costumerdetails);
-
-
-
+  const handleAddOrder = () => {
+    setCustomerDetails(prevState => ({
+      ...prevState,
+      orders: [...prevState.orders, { name: "", number: 0 }]
+    }));
   };
 
-  const onChange = (event) => {
-const { name, value } = event.target;
-setCostumerdetails([{ ...Costumerdetails[0], [name]: value }]);
+  const handleRemoveOrder = index => {
+    const orders = [...customerDetails.orders];
+    orders.splice(index, 1);
+    setCustomerDetails(prevState => ({
+      ...prevState,
+      orders
+    }));
   };
-  // const arraychange = (eve) =>{
-  //   const { name, value } = eve.target;
-  //   setCostumerdetails([{ ...Costumerdetails.order[0], [name]: value }]);
-  // } 
-
-  function handleDeleteField(index) {
-    const newFields = [...fields];
-    newFields.splice(index, 1);
-    setFields(newFields);
-  }
+  // const handlesubmit = (e) =>{
+  //   e.preventDefault();
+  //   console.log(customerDetails)
+  // }
   const [prod, setprod] = useState([]);
   useEffect(() => {
     // Make a GET request to the backend API
@@ -59,196 +71,173 @@ setCostumerdetails([{ ...Costumerdetails[0], [name]: value }]);
         console.error(error);
       });
   }, []);
+
   return (
     <>
-      <datalist id="datalistOptions">
+    <datalist id="datalistOptions">
         {prod.map((display) => (
           <option value={display.prductname} />
         ))}
       </datalist>
-
       <div className="container">
-        <form onSubmit={handleSubmit}>
-          <Row>
-            <Col>
-              <div className="mb-3">
-                <label htmlFor="Input" className="form-label ">
-                  <h4>First Name:</h4>
-                </label>
-                <input
-                value={Costumerdetails.Fname}
-                  type="text"
-                  name="Fname"
-                  className="form-control"
-                  id="Fname"
-                  onChange={onChange}
-                  aria-describedby="emailHelp"
-                />
-              </div>
-            </Col>
-            <Col>
-              <label htmlFor="leInput" className="form-label">
-                <h4>Second Name:</h4>
-              </label>
-              <input 
-              type="text"
-              name="Lname"
-              id="Lname"
-               className="form-control"
-               onChange={onChange}
-                   />
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <div className="mb-3">
-                <label htmlFor="exampleInput" className="form-label my-2">
-                  <h4>Cell Number:</h4>
-                </label>
-                <input
-                value={Costumerdetails.cell}
-                onChange={onChange}
-                  type="text"
-                  id="Cell"
-                  name="Cell"
-                  className="form-control"
-                  aria-describedby="emailHelp"
-                />
-              </div>
-            </Col>
-            <Col xs={9}>
-              <div className="mb-3">
-                <label htmlFor="Input" className="form-label my-2">
-                  <h4>Email Adderss:</h4>
-                </label>
-                <input
-                name="email"
-                id="email"
-                  type="email"
-                  className="form-control"
-                  aria-describedby="emailHelp"
-                  onChange={onChange}
-                />
-              </div>
-            </Col>
-          </Row>
-
-          <div className="mb-3">
-            <label htmlFor="Input" className="form-label my-2">
-              <h4>Adderss:</h4>
-            </label>
-            <input
-              id="address"
-              name="address"
-              type="text"
-              className="form-control"
-              aria-describedby="emailHelp"
-              onChange={onChange}
-            />
-          </div>
-
-          <div className="card my-4">
-            <div className="card-header">
-              <i className="fw-bold">Enter item Details:</i>
-            </div>
-            <div className="card-body container">
-              <form method="post" id="insert_form">
-                <table className="table table-bordered" id="item_table">
-                  <tbody>
-                    <tr>
-                      <th>Enter Item Name</th>
-                      <th>Enter Quentity</th>
-                      <th className="text-center">
-                        <button
-                          type="button"
-                          name="add"
-                          onClick={handleAddField}
-                          className="btn btn-success btn-sm add"
-                        >
-                          <i className="fas fa-plus"></i>
-                        </button>
-                      </th>
-                    </tr>
-                    {fields.map((field, index) => (
-                      <>
-                        <tr>
+      <Row>
+      <Col>
+      <div className="mb-3">
+        <label htmlFor="Input" className="form-label "><h4>First Name:</h4></label>
+        <input
+        className="form-control"
+          type="text"
+          value={customerDetails.Fname}
+          onChange={e =>
+            setCustomerDetails({
+              ...customerDetails,
+              Fname: e.target.value
+            })
+          }
+        />
+      </div>
+      </Col>
+      <Col>
+      <div>
+        <label className="form-label">
+          <h4>Last Name:</h4>
+          </label>
+        <input
+        className="form-control"
+          type="text"
+          value={customerDetails.Lname}
+          onChange={e =>
+            setCustomerDetails({
+              ...customerDetails,
+              Lname: e.target.value
+            })
+          }
+        />
+      </div>
+      </Col>
+      </Row>
+      <Row>
+           <Col>
+      <div className="mb-3">
+        <label className="form-label my-2">
+          <h4>Phone Number:</h4>
+        </label>
+        <input
+        className="form-control"
+          type="text"
+          value={customerDetails.number}
+          onChange={e =>
+            setCustomerDetails({
+              ...customerDetails,
+              number: e.target.value
+            })
+          }
+        />
+      </div>
+      </Col>
+      <Col xs={9}>
+      <div>
+        <label className="form-label my-2">
+          <h4>Email:</h4>
+        </label>
+        <input
+        className="form-control"
+          type="email"
+          value={customerDetails.email}
+          onChange={e =>
+            setCustomerDetails({
+              ...customerDetails,
+              email: e.target.value
+            })
+          }
+        />
+      </div>
+      </Col>
+      </Row>
+      <div className="mb-3">
+        <label className="form-label my-2">
+          <h4>Address:</h4>
+          </label>
+        <input
+        className="form-control"
+          type="text"
+          value={customerDetails.address}
+          onChange={e =>
+            setCustomerDetails({
+              ...customerDetails,
+              address: e.target.value
+            })
+          }
+        />
+      </div>
+      <div className="card my-4">
+      <div className="card-header">
+        <h3>Orders</h3>
+        </div>
+        
+          <div className="card-body container" >
+            <table className="table table-bordered">
+              <tbody>
+                <tr>
+                <th className="text-center">Enter Item Name</th>
+                <th className="text-center">Enter Quentity</th>
+                <th className="text-center">
+                <button className="btn btn-primary" type="button" onClick={handleAddOrder}>
+                <i className="fas fa-plus"></i>
+        </button>
+                </th>
+                </tr>
+                {customerDetails.orders.map((order, index) => (
+                  <>
+                   <tr>
                           <td>
-                            <input
-                              className="form-control"
-                              //  //  //
-                              id="order"
-                              type="text"
-                              // name="order"
-                              //  //  //
-                              list="datalistOptions"
-                              // id="DataList"
-                              name="item_name[]"
-                              // value={Costumerdetails[0].order[0].name}
-                              value={field.name}
-                              onChange={(event) => {
-                                const list = [...fields];
-                                list[index] = {
-                                  ...list[index],
-                                  name: event.target.value,
-                                };
-                                setFields(list);
-                              }}
-                              placeholder="Type to search..."
-                            />
+                          <input
+                          key={index}
+            className="form-control"
+              type="text"
+              name="name"
+              value={order.name}
+              onChange={e => handleOrderChange(index, e)}
+            />
                           </td>
                           <td>
-                            <input
-                            // value={Costumerdetails[0].order[0].number}
-                              value={field.number}
-                              type="number"
-                              onChange={(e) => {
-                                const list = [...fields];
-                                list[index] = {
-                                  ...list[index],
-                                  number: e.target.value,
-                                };
-                                setFields(list);
-                              }}
-                              name="item_name[]"
-                              className="form-control intem_name"
-                            />
+                          <input
+            className="form-control"
+              type="number"
+              name="number"
+              value={order.number}
+              onChange={e => handleOrderChange(index, e)}
+            /> 
                           </td>
                           <td className="text-center">
-                            <button
-                              type="button"
-                              name="Subtract"
-                              onClick={() => handleDeleteField(index)}
-                              className="btn btn-danger btn-sm add"
-                            >
-                              <i className="fas fa-minus"></i>
-                            </button>
-                          </td>
-                        </tr>
-                      </>
-                    ))}
-                  </tbody>
-                </table>
-              </form>
-            </div>
-          </div>
-          <div className="container my-4 text-center ">
-            <button
-              type="submit"
-              onClick={handleSubmit}
-              className="btn btn-primary mx-2"
-            >
-              Create Invoice
+                          <button className="btn btn-danger" type="button" onClick={() => handleRemoveOrder(index)}>
+                          <i className="fas fa-minus"></i>
             </button>
-            <button type="submit" className="btn btn-primary mx-2">
+                          </td>
+                          </tr>
+                  </>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+      </div>
+      <div className="container my-4 text-center ">
+      <button
+              type="submit"
+              onClick={handlesubmit}
+              className="btn btn-primary mx-2">
+                Create Invoice</button>
+                <button type="submit" className="btn btn-primary mx-2">
               Print Invoice
             </button>
             <button type="submit" className="btn btn-primary mx-2">
               Save as PDF
             </button>
-          </div>
-        </form>
-      </div>
-      <div></div>
-    </>
+                </div>    
+    </div>
+    <div className="my-2"></div>
+    </>   
   );
 }
+

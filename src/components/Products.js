@@ -21,7 +21,7 @@ export default function Products() {
   }
 
   const [prod, setprod] = useState([]);
-  useEffect(() => {
+  useEffect(() => { 
     // Make a GET request to the backend API
     axios
       .get("http://localhost:5000/products")

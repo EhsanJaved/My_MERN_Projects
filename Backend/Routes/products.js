@@ -33,7 +33,7 @@ router.route('/add').post((req,res)=>{
     
     const newProduct = new products ({
         prductname,
-        costprice,
+        costprice, 
         sellprice,
         sold,
         instock

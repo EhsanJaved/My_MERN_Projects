@@ -24,9 +24,12 @@ connection.once('open',()=>
 
 // path routes 
 const products = require('./Backend/Routes/products');
+const CostumerOrder = require('./Backend/Routes/CostumerOrder')
 
 // using routes
 app.use('/products', products);
+app.use('/invoiceMaker', CostumerOrder);
+
 
 app.listen(port, () => {
   console.log(`API server listening on port ${port}`);

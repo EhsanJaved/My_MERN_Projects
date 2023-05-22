@@ -7,7 +7,7 @@ import Costumerslist from './CostumersList';
 import HomeProducts from './HomeNew';
 import Feedbacks from './Feedbacks';
 import Orders from './Orders';
-import InvoiceMaker from './InvoiceMaker2';
+import InvoiceMaker from './InvoiceMaker2'; 
 import Products from "./Products";
 import Records from "./Records"; 
 
