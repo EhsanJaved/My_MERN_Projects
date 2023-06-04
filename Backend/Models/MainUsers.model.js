@@ -3,11 +3,11 @@ const Schema = mongoose.Schema;
 
 const mainUserSchema = new Schema(
     {
-        UserEmail:{type: String, Unique: true, required: true},
-        UserName:{type: String, required: true},
-        UserPassword:{type: String, required: true}
+        email:{type: String, Unique: true, required: true},
+        name:{type: String, required: true},
+        password:{type: String, required: true}
     }
 )
-const MainUser = new mongoose.model("Users", mainUserSchema);
+const MainUser = new mongoose.model("main", mainUserSchema);
 
 module.exports = MainUser

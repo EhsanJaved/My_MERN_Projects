@@ -1,13 +1,103 @@
-import React from 'react'
+import React,{useEffect, useState} from 'react'; // filled with errors
+import Swiper from 'swiper';
 import '../componentsCSS/dbproject.css'
 import de from "../iconsAndImages/free-delivery-icon-13.jpg"
 import log from "../iconsAndImages/dentallogo.jpg"
-// import '../componentsJS/db project' // scr
 import pay from "../iconsAndImages/IMG-20221226-WA0006.jpg"
 import epay from "../iconsAndImages/payment-400x400.jpg"
+
 export default function PublicPage() {
-  return (    
-    <body> 
+        const [searchFormActive, setSearchFormActive] = useState(false);
+        const [shoppingCartActive, setShoppingCartActive] = useState(false);
+        const [loginFormActive, setLoginFormActive] = useState(false);
+        const [navbarActive, setNavbarActive] = useState(false);
+      
+        const handleSearchClick = () => {
+          setSearchFormActive(!searchFormActive);
+          setShoppingCartActive(false);
+          setLoginFormActive(false);
+          setNavbarActive(false);
+        };
+      
+        const handleCartClick = () => {
+          setShoppingCartActive(!shoppingCartActive);
+          setSearchFormActive(false);
+          setLoginFormActive(false);
+          setNavbarActive(false);
+        };
+      
+        const handleLoginClick = () => {
+          setLoginFormActive(!loginFormActive);
+          setSearchFormActive(false);
+          setShoppingCartActive(false);
+          setNavbarActive(false);
+        };
+      
+        const handleMenuClick = () => {
+          setNavbarActive(!navbarActive);
+          setSearchFormActive(false);
+          setShoppingCartActive(false);
+          setLoginFormActive(false);
+        };
+      
+        const handleScroll = () => {
+          setSearchFormActive(false);
+          setShoppingCartActive(false);
+          setLoginFormActive(false);
+          setNavbarActive(false);
+        };
+      
+        useEffect(() => {
+          const productSlider = new Swiper(".product-slider", {
+            loop: true,
+            spaceBetween: 20,
+            autoplay: {
+              delay: 7500,
+              disableOnInteraction: false,
+            },
+            centeredSlides: true,
+            breakpoints: {
+              0: {
+                slidesPerView: 1,
+              },
+              768: {
+                slidesPerView: 2,
+              },
+              1020: {
+                slidesPerView: 3,
+              },
+            },
+          });
+      
+          const reviewSlider = new Swiper(".review-slider", {
+            loop: true,
+            spaceBetween: 20,
+            autoplay: {
+              delay: 7500,
+              disableOnInteraction: false,
+            },
+            centeredSlides: true,
+            breakpoints: {
+              0: {
+                slidesPerView: 1,
+              },
+              768: {
+                slidesPerView: 2,
+              },
+              1020: {
+                slidesPerView: 3,
+              },
+            },
+          });
+      
+          return () => {
+            // Cleanup Swiper instances
+            productSlider.destroy();
+            reviewSlider.destroy();
+          };
+        }, []);
+    return ( 
+    <body className='start'> 
 <header className="header">
 
     <a href="#home" className=" logo">
@@ -22,9 +112,10 @@ export default function PublicPage() {
     </nav>
 
     <div className="icons">
-        <div className="fas fa-bars" id="menu-btn"></div>
-        <div className="fas fa-shopping-cart" id="cart-btn"></div>
-        <div className="fas fa-user" id="login-btn"></div>
+        <button className="fas fa-bars" id="menu-btn"></button>
+        {/* <button id="cart-btn" onClick={handleCartClick}>button</button> */}
+        <button className="fas fa-shopping-cart" id="cart-btn"></button>
+        <button className=" fas fa-user" id="login-btn" onClick={handleLoginClick}></button>
         
     </div>
 
@@ -262,5 +353,5 @@ export default function PublicPage() {
 
 </body>
     
-  )
-}
+    );
+};

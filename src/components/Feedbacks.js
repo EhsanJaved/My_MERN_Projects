@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
-
+// import { Outlet } from 'react-router-dom';
 export default function Feedbacks() {
 
   const [data, setUsers] = useState([]);
@@ -67,6 +67,7 @@ export default function Feedbacks() {
           </div>
         </table>
       </div>
+      {/* <Outlet/> */}
     </>
   )
 }

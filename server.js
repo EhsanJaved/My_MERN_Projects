@@ -25,10 +25,12 @@ connection.once('open',()=>
 // path routes 
 const products = require('./Backend/Routes/products');
 const CostumerOrder = require('./Backend/Routes/CostumerOrder')
+const MainUser = require('./Backend/Routes/MainUser')
 
 // using routes
 app.use('/products', products);
 app.use('/invoiceMaker', CostumerOrder);
+app.use('/mainuser', MainUser);
 
 
 app.listen(port, () => {

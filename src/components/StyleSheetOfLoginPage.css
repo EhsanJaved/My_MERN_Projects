@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
-:root{
+:root{ 
   --first-color: #1A73E8;
   --input-color: #80868B;
   --border-color: #DADCE0;
@@ -8,17 +8,17 @@
   --normal-font-size: 1rem;
   --small-font-size: .75rem;
 }
-  *,::before,::after{
+ .login-page *,::before,::after{
   box-sizing: border-box;
 }
-body{
+.login-page body{
   margin: 0;
   padding: 0;
   font-family: var(--body-font);
   font-size: var(--normal-font-size);
 }
 
-#logoOfLogin{
+.login-page #logoOfLogin{
     height: 16%;
     float: right;
     display: flex;
@@ -28,17 +28,17 @@ body{
     right: 5%;
 }
 
-h1{
+.login-page h1{
   margin: 0;
 }
 
-.l-form{
+.login-page .l-form{
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
 }
-.form{
+.login-page .form{
     overflow: visible;
     background: rgba(255, 252, 131, 0.27);
     border-radius: 16px;
@@ -50,19 +50,19 @@ h1{
   padding: 4rem 2rem;
   border-radius: 1rem;
 }
-.form__title{
+.login-page .form__title{
   font-size: 200%;
   font-family: Sans-serif;
   font-weight: 400;
   margin-bottom: 3rem;
   color: rgb(3, 24, 158);
 }
-.form__div{
+.login-page .form__div{
   position: relative;
   height: 48px;
   margin-bottom: 1.5rem;
 }
-.form__input{
+.login-page .form__input{
   position: absolute;
   top: 0;
   left: 0;
@@ -76,7 +76,7 @@ h1{
   background: none;
   z-index: 1;
 }
-.form__label{
+.login-page .form__label{
   position: absolute;
   left: 1rem;
   top: 1rem;
@@ -86,7 +86,7 @@ h1{
   font-size: var(--normal-font-size);
   transition: .3s;
 }
-.form__button{
+.login-page .form__button{
   display: block;
   margin-left: auto;
   padding: .75rem 2rem;
@@ -99,11 +99,11 @@ h1{
   cursor: pointer;
   transition: .3s;
 }
-.form__button:hover{
+.login-page .form__button:hover{
   box-shadow: 0 10px 36px rgba(0,0,0,.15);
 }
 
-.form__input:focus + .form__label{
+.login-page .form__input:focus + .form__label{
   top: -.5rem;
   left: .8rem;
   color: var(--first-color);
@@ -117,7 +117,7 @@ h1{
 
 }
 
-.form__input:not(:placeholder-shown).form__input:not(:focus)+ .form__label{
+.login-page .form__input:not(:placeholder-shown).form__input:not(:focus)+ .form__label{
   top: -.5rem;
   left: .8rem;
   font-size: var(--small-font-size);
@@ -125,36 +125,36 @@ h1{
   z-index: 10;
 }
 
-.form__input:focus{
+.login-page  .form__input:focus{
   border: 1.5px solid var(--first-color);
   background-color: rgba(255, 255, 255, 0);
 }
 
-*{
+.login-page *{
     margin: 0px;
     padding: 0px;
 }
 
-body{
+.login-page body{
     background-color: rgba(99, 80, 240, 0.558);
 }
-.boxcolour{
+.login-page .boxcolour{
     background-color:rgba(99, 80, 240, 0.558);
     border-radius: 1rem;
 }
 
-.context {
+.login-page .context {
     width: 100%;
     position: absolute;
     top:50vh;  
 }
 
-.area{
+.login-page .area{
     padding: 0%;
     margin: 0%;
 }
 
-.circles{
+.login-page .circles{
     position: absolute;
     top: 0;
     left: 0;
@@ -163,7 +163,7 @@ body{
     overflow: hidden;
 }
 
-.circles li{
+.login-page .circles li{
     position: absolute;
     display: block;
     list-style: none;
@@ -174,14 +174,14 @@ body{
     bottom: -150px;
 }
 
-.circles li:nth-child(1){
+.login-page .circles li:nth-child(1){
     left: 25%;
     width: 80px;
     height: 80px;
     animation-delay: 0s;
-}
+} 
 
-.circles li:nth-child(2){
+.login-page .circles li:nth-child(2){
     left: 10%;
     width: 20px;
     height: 20px;
@@ -189,14 +189,14 @@ body{
     animation-duration: 10s;
 }
 
-.circles li:nth-child(3){
+.login-page .circles li:nth-child(3){
     left: 70%;
     width: 20px;
     height: 20px;
     animation-delay: 3s;
 }
 
-.circles li:nth-child(4){
+.login-page .circles li:nth-child(4){
     left: 40%;
     width: 60px;
     height: 60px;
@@ -204,28 +204,28 @@ body{
     animation-duration: 15s;
 }
 
-.circles li:nth-child(5){
+.login-page .circles li:nth-child(5){
     left: 65%;
     width: 20px;
     height: 20px;
     animation-delay: 0s;
 }
 
-.circles li:nth-child(6){
+.login-page .circles li:nth-child(6){
     left: 75%;
     width: 110px;
     height: 110px;
     animation-delay: 3s;
 }
 
-.circles li:nth-child(7){
+.login-page .circles li:nth-child(7){
     left: 35%;
     width: 150px;
     height: 150px;
     animation-delay: 7s;
 }
 
-.circles li:nth-child(8){
+.login-page .circles li:nth-child(8){
     left: 50%;
     width: 25px;
     height: 25px;
@@ -233,7 +233,7 @@ body{
     animation-duration: 45s;
 }
 
-.circles li:nth-child(9){
+.login-page .circles li:nth-child(9){
     left: 20%;
     width: 15px;
     height: 15px;
@@ -241,7 +241,7 @@ body{
     animation-duration: 35s;
 }
 
-.circles li:nth-child(10){
+.login-page .circles li:nth-child(10){
     left: 85%;
     width: 150px;
     height: 150px;
