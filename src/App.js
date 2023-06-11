@@ -1,6 +1,5 @@
 import './App.css';
 import {Route, Routes} from "react-router-dom";
-import logo from'./iconsAndImages/LogoDentail.svg';
 import MenuBar from './components/MenuBar';
 import Costumerslist from './components/CostumersList';
 import Feedbacks from './components/Feedbacks';
@@ -10,29 +9,31 @@ import InvoiceMaker from './components/InvoiceMaker2';
 import Records from './components/Records';
 import HomeProducts from './components/HomeNew'
 import LoginPage from './components/LoginPage'
+import Main from './components/Page3/Main'
+import Signup from './components/SignupPage'
+import Images from './components/Images.component';
+import logo from'./iconsAndImages/LogoDentail.svg';
+import pro1 from "./iconsAndImages/product11.jpg";
+// import MainLogo from'./iconsAndImages/HN_Dental.png';
+import MainLogo from'./iconsAndImages/HN_Dental_BG.png';
+import MainLogo2 from'./iconsAndImages/HN_Dental.svg';
 import CarouselOne from './iconsAndImages/carouselOne.jpg';
 import CarouselTwo from './iconsAndImages/carouselTwo.jpg';
 import CarouselThree from './iconsAndImages/carouselThree.jpg';
-import Main from './components/Page3/Main'
-import Signup from './components/SignupPage'
-
-// images
-import pro1 from "./iconsAndImages/product11.jpg";
-// import MainLogo from'./iconsAndImages/LogoHN.png';
-// import MainLogo from'./iconsAndImages/logo.jpg';
 
 function App(){
   return(
     <>
-    {/* <Main/> */}
 <Routes>
-  {/* <Route exact  path='/' element={<PublicPage/>} /> */}
+  
 <Route exact  path='/' element={<Main
- cr1={CarouselOne} cr2={CarouselTwo} cr3={CarouselThree} logo={logo} imgg={pro1} />} />
-  <Route exact  path='/login' element={<LoginPage logo={logo}/>} />
-  <Route exact  path='/signup' element={<Signup logo={logo}/>} />
-    <Route exact  path='/dashboard' element={<MenuBar logo={logo}/>}>
+ cr1={CarouselOne} cr2={CarouselTwo} cr3={CarouselThree} logo={MainLogo} imgg={pro1} />} />
+ {/* <Footer/> */}
+  <Route exact  path='/login' element={<LoginPage logo={MainLogo}/>} />
+  <Route exact  path='/signup' element={<Signup logo={MainLogo}/>} />
+    <Route exact  path='/dashboard' element={<MenuBar logo={MainLogo}/>}>
         <Route exact  path='/dashboard/costumersList' element={<Costumerslist/>} />
+        <Route exact  path='/dashboard/images' element={<Images crz={CarouselOne} icon={MainLogo}/>} />
         <Route exact  path='/dashboard/feeds' element={<Feedbacks/>} />
         <Route exact  path='/dashboard/home' element={<HomeProducts/>} />
         <Route exact  path='/dashboard/products' element={<Products/>} />

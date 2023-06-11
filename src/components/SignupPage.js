@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import './StyleSheetOfLoginPage.css';
 import PropTypes from 'prop-types'
-import { Link,useNavigate } from 'react-router-dom';
+import { Link,useNavigate, } from 'react-router-dom';
 import axios from 'axios'
 
 export default function Signup (props){
@@ -9,7 +9,11 @@ export default function Signup (props){
     const [email, setEmail] = useState('');
     const [Name, setName] = useState('');
     const [password, setPassword] = useState('');
- const navigate = useNavigate();
+    const navigate = useNavigate();
+const back =() =>  {
+    navigate(-1)
+}
+ 
     // const handleSubmit = async (event) => {
     //     event.preventDefault();
     //     console.log(`Email: ${email} Password: ${password}`);
@@ -61,10 +65,11 @@ export default function Signup (props){
     <body>
         <div className="l-form">
             <form action="" className="form"
+
             //  onSubmit={handleSubmit}
             >
                 <h1 className="form__title"><b>SIGN UP</b> 
-                    <img id="logoOfLogin" src={props.Logo} alt="HM dentail"/>
+                    <img id="logoOfLogin" src={props.logo} alt="HM dentail"/>
                     <h5>
                   {statusMsg}
                 </h5>
@@ -95,6 +100,7 @@ export default function Signup (props){
                 <button type="submit" className="form__button" value="Login" 
                 // onSubmit={handleSubmit}
                  >Signup</button>
+                  <button className="btn btn-primary form__label" value="Login" onClick={back}>Back</button>
             </form>
         </div>
     </body>

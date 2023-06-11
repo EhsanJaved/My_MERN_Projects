@@ -26,12 +26,13 @@ connection.once('open',()=>
 const products = require('./Backend/Routes/products');
 const CostumerOrder = require('./Backend/Routes/CostumerOrder')
 const MainUser = require('./Backend/Routes/MainUser')
+const iconsAndImages = require('./Backend/Routes/images')
 
 // using routes
 app.use('/products', products);
 app.use('/invoiceMaker', CostumerOrder);
 app.use('/mainuser', MainUser);
-
+app.use('/mainpageimages',iconsAndImages)
 
 app.listen(port, () => {
   console.log(`API server listening on port ${port}`);

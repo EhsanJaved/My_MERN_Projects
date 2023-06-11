@@ -3,7 +3,7 @@ import './StyleSheetOfLoginPage.css';
 import PropTypes from 'prop-types'
 import { Link,useNavigate } from 'react-router-dom';
 import axios from 'axios'
-
+import logoimage from '../iconsAndImages/dental logo png_7034946.png'
 export default function LoginPage (props){
     const [statusMsg, setStatusMsg] = useState('')
     const [email, setEmail] = useState('');
@@ -44,16 +44,36 @@ export default function LoginPage (props){
 
            <div className="area" >
         <ul className="circles">
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
+                <li>
+                <img className="position-absolute top-50 start-50 translate-middle img-responsive" height={70} src={logoimage} alt="HN dental" />
+                </li>
+                <li>
+                <img className="position-absolute top-50 start-50 translate-middle img-responsive" height={50} src={logoimage} alt="HN dental" />
+                </li>
+                <li>
+                <img className="position-absolute top-50 start-50 translate-middle img-responsive" height={100} src={logoimage} alt="HN dental" />
+                </li>
+                <li>
+                <img className="position-absolute top-50 start-50 translate-middle img-responsive" height={50} src={logoimage} alt="HN dental" />
+                </li>
+                <li>
+                <img className="position-absolute top-50 start-50 translate-middle img-responsive" height={40} src={logoimage} alt="HN dental" />
+                </li>
+                <li>
+                <img className="position-absolute top-50 start-50 translate-middle img-responsive" height={60} src={logoimage} alt="HN dental" />
+                </li>
+                <li>
+                <img className="position-absolute top-50 start-50 translate-middle img-responsive" height={80} src={logoimage} alt="HN dental" />
+                </li>
+                <li>
+                <img className="position-absolute top-50 start-50 translate-middle img-responsive" height={90} src={logoimage} alt="HN dental" />
+                </li>
+                <li>
+                <img className="position-absolute top-50 start-50 translate-middle img-responsive" height={100} src={logoimage} alt="HN dental" />
+                </li>
+                <li >
+                  <img className="position-absolute top-50 start-50 translate-middle img-responsive" height={100} src={logoimage} alt="HN dental" />
+                </li>
                 
         </ul>
       </div >
@@ -61,7 +81,16 @@ export default function LoginPage (props){
         <div className="l-form">
             <form action="" className="form" onSubmit={handleSubmit}>
                 <h1 className="form__title"><b>SIGN IN</b> 
-                    <img id="logoOfLogin" src={props.Logo} alt="HM dentail"/>
+                {/* <Navbar.Brand href="#home">
+            <img
+              src={props.MainLogo}
+              width="30"
+              height="30"
+              className="d-inline-block align-top"
+              alt="React Bootstrap logo"
+            />
+          </Navbar.Brand> */}
+                    <img id="logoOfLogin" src={props.logo} alt="HN dental" />
                     <h5>
                   {statusMsg}
                 </h5>

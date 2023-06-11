@@ -1,15 +1,5 @@
-// import ReactDOM from "react-dom/client";
-
-import { BrowserRouter as Router, Routes, Route, Link, Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import React, { useState } from "react";
-//pages linked
-import Costumerslist from "./CostumersList";
-import HomeProducts from "./HomeNew";
-import Feedbacks from "./Feedbacks";
-import Orders from "./Orders";
-import InvoiceMaker from "./InvoiceMaker2";
-import Products from "./Products";
-import Records from "./Records";
 
 // page title changer
 export default function MenuBar(props) {
@@ -35,6 +25,9 @@ export default function MenuBar(props) {
   const records = () => {
     setdivHeader("Records");
   };
+  const ImagesDetalis = () => {
+    setdivHeader("Icons and Carousels");
+  };
   return (
     // <Router>
     <>
@@ -52,15 +45,15 @@ export default function MenuBar(props) {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-        <img src={props.Logo} alt="Bootstrap" width="170" height="80" />
+        <img src={props.logo} alt="HN Dental" width="170" height="80" />
 
         <div className="navbar-nav">
           <div className="nav-item text-nowrap">
             <Link to="/">
-              
               <button
                 className="btn btn-outline-primary mx-2 my-2"
-                type="submit" >
+                type="submit"
+              >
                 SignOut
               </button>
             </Link>
@@ -78,7 +71,7 @@ export default function MenuBar(props) {
             <div className="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary">
               <ul className="nav flex-column">
                 <li className="nav-item">
-                  <Link
+                  <Link 
                     className="nav-link active"
                     aria-current="page"
                     to="/dashboard/home"
@@ -102,7 +95,35 @@ export default function MenuBar(props) {
                       <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6Z" />
                     </svg>
                   </Link>
+
                 </li>
+                <li className="nav-item">
+                  <Link
+                    className="nav-link active"
+                    aria-current="page"
+                    to="/dashboard/images"
+                    onClick={ImagesDetalis}
+                  >
+                    <span
+                      data-feather="home"
+                      className="fw-bold align-text-bottom "
+                    ></span>
+
+                    <i className="mx-1 fw-bold fs-5">Hero & Images</i>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-images"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M4.502 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z" />
+                      <path d="M14.002 13a2 2 0 0 1-2 2h-10a2 2 0 0 1-2-2V5A2 2 0 0 1 2 3a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v8a2 2 0 0 1-1.998 2zM14 2H4a1 1 0 0 0-1 1h9.002a2 2 0 0 1 2 2v7A1 1 0 0 0 15 11V3a1 1 0 0 0-1-1zM2.002 4a1 1 0 0 0-1 1v8l2.646-2.354a.5.5 0 0 1 .63-.062l2.66 1.773 3.71-3.71a.5.5 0 0 1 .577-.094l1.777 1.947V5a1 1 0 0 0-1-1h-10z" />
+                    </svg>
+                  </Link>
+                </li>
+
                 <li className="nav-item">
                   <Link
                     className="nav-link"
@@ -252,8 +273,7 @@ export default function MenuBar(props) {
             </div>
 
             <div className="displayitem">
-              
-              <Outlet/>
+              <Outlet />
             </div>
           </main>
         </div>
