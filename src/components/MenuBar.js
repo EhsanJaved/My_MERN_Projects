@@ -62,13 +62,15 @@ export default function MenuBar(props) {
       </header>
       {/* Navigation bar End */}
       {/* Side navigation bar start */}
+      
       <div className="container-fluid flex-grow-1  ">
         <div className="row">
           <nav
             id="sidebarMenu"
             className="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse"
           >
-            <div className="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary">
+            {/* <div className="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary"> */}
+            <div className="position-sticky pt-3">
               <ul className="nav flex-column">
                 <li className="nav-item">
                   <Link 

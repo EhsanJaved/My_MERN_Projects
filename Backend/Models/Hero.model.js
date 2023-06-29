@@ -3,12 +3,16 @@ const Schema = mongose.Schema;
 
 const iconsAndImages = new Schema(
     {
-        description: {
-            type: String
+        name:{
+            type: String,
+            require: true
         },
-        heroimage:{
-            require: true,
-            type: String   
+        data:{
+            type: String,
+            require: true
+        },
+        description: {
+            type: String  
         },
         state:{
             require: true,
