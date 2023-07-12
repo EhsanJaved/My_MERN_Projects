@@ -10,49 +10,47 @@ export default function InvoiceMaker() {
     console.log(customerDetails)
     try {
       // Send a POST request to the server to create a new customer
-      await axios.post('/customers', customerDetails);
-      alert('Customer created');
+      await axios.post('http://localhost:5000/invoiceMaker/', customerDetails);
+      alert('Order Placed');
     } catch (error) {
       console.log(error);
       alert('Error creating customer');
     }
   };
 
-
- 
-
    const [customerDetails, setCustomerDetails] = useState({
-    Fname: "",
-    Lname: "",
-    number: 0,
-    email: "",
-    address: "",
-    orders: [{ name: "", number: 0 }]
+    CostumerFName: "",
+    CostumerLName: "",
+    CostumerCell: 0,
+    CostumerEmail: "",
+    CostumerAddress: "",
+    CostumerPostalAddress: 0,
+    CostumerOrder: [{ name: "", number: 0 }]
   });
 
   const handleOrderChange = (index, event) => {
     const { name, value } = event.target;
-    const orders = [...customerDetails.orders];
-    orders[index][name] = value;
+    const CostumerOrder = [...customerDetails.CostumerOrder];
+    CostumerOrder[index][name] = value;
     setCustomerDetails(prevState => ({
       ...prevState,
-      orders
+      CostumerOrder
     }));
   };
 
   const handleAddOrder = () => {
     setCustomerDetails(prevState => ({
       ...prevState,
-      orders: [...prevState.orders, { name: "", number: 0 }]
+      CostumerOrder: [...prevState.CostumerOrder, { name: "", number: 0 }]
     }));
   };
 
   const handleRemoveOrder = index => {
-    const orders = [...customerDetails.orders];
-    orders.splice(index, 1);
+    const CostumerOrder = [...customerDetails.CostumerOrder];
+    CostumerOrder.splice(index, 1);
     setCustomerDetails(prevState => ({
       ...prevState,
-      orders
+      CostumerOrder
     }));
   };
   // const handlesubmit = (e) =>{
@@ -87,11 +85,11 @@ export default function InvoiceMaker() {
         <input
         className="form-control"
           type="text"
-          value={customerDetails.Fname}
+          value={customerDetails.CostumerFName}
           onChange={e =>
             setCustomerDetails({
               ...customerDetails,
-              Fname: e.target.value
+              CostumerFName: e.target.value
             })
           }
         />
@@ -105,11 +103,11 @@ export default function InvoiceMaker() {
         <input
         className="form-control"
           type="text"
-          value={customerDetails.Lname}
+          value={customerDetails.CostumerLName}
           onChange={e =>
             setCustomerDetails({
               ...customerDetails,
-              Lname: e.target.value
+              CostumerLName: e.target.value
             })
           }
         />
@@ -120,16 +118,16 @@ export default function InvoiceMaker() {
            <Col>
       <div className="mb-3">
         <label className="form-label my-2">
-          <h4>Phone Number:</h4>
+          <h4>Phone number:</h4>
         </label>
         <input
         className="form-control"
           type="text"
-          value={customerDetails.number}
+          value={customerDetails.CostumerCell}
           onChange={e =>
             setCustomerDetails({
               ...customerDetails,
-              number: e.target.value
+              CostumerCell: e.target.value
             })
           }
         />
@@ -138,41 +136,63 @@ export default function InvoiceMaker() {
       <Col xs={9}>
       <div>
         <label className="form-label my-2">
-          <h4>Email:</h4>
+          <h4>CostumerEmail:</h4>
         </label>
         <input
         className="form-control"
-          type="email"
-          value={customerDetails.email}
+          type="CostumerEmail"
+          value={customerDetails.CostumerEmail}
           onChange={e =>
             setCustomerDetails({
               ...customerDetails,
-              email: e.target.value
+              CostumerEmail: e.target.value
             })
           }
         />
       </div>
       </Col>
       </Row>
-      <div className="mb-3">
+      <Row>
+          <Col>
+          <div className="mb-3">
         <label className="form-label my-2">
-          <h4>Address:</h4>
+          <h4>CostumerAddress:</h4>
           </label>
         <input
         className="form-control"
           type="text"
-          value={customerDetails.address}
+          value={customerDetails.CostumerAddress}
           onChange={e =>
             setCustomerDetails({
               ...customerDetails,
-              address: e.target.value
+              CostumerAddress: e.target.value
+            })
+          }
+        />
+      </div></Col>
+          <Col>
+      <div className="mb-3">
+        <label className="form-label my-2">
+          <h4>Postal Address:</h4>
+        </label>
+        <input
+        className="form-control"
+          type="text"
+          value={customerDetails.CostumerPostalAddress}
+          onChange={e =>
+            setCustomerDetails({
+              ...customerDetails,
+              CostumerPostalAddress: e.target.value
             })
           }
         />
       </div>
+      </Col>
+      </Row>
+{/* cart */}
       <div className="card my-4">
       <div className="card-header">
-        <h3>Orders</h3>
+        <h3>CostumerOrder</h3>
         </div>
         
           <div className="card-body container" >
@@ -187,7 +207,7 @@ export default function InvoiceMaker() {
         </button>
                 </th>
                 </tr>
-                {customerDetails.orders.map((order, index) => (
+                {customerDetails.CostumerOrder.map((order, index) => (
                   <>
                    <tr>
                           <td>

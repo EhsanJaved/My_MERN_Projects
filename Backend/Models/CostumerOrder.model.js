@@ -9,7 +9,7 @@ const CostumerOrderSchema =new Schema({
     CostumerCell:{type:Number, requried: true},
     CostumerEmail:{type: String, unique: true, requried: true},
     CostumerAddress:{type: String, requried: true},
-    CostumerPostalAddress:{type:Number, requried: true},
+    CostumerPostalAddress:{type:Number},
     CostumerOrder:[{
         name: {type: String, required: true,},
         number: {type: Number, required: true,}
