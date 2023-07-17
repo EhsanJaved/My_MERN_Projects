@@ -10,8 +10,8 @@ export default function InvoiceMaker() {
     console.log(customerDetails)
     try {
       // Send a POST request to the server to create a new customer
-      await axios.post('http://localhost:5000/invoiceMaker/', customerDetails);
-      alert('Order Placed');
+      await axios.post('/customers', customerDetails);
+      alert('Customer created');
     } catch (error) {
       console.log(error);
       alert('Error creating customer');
@@ -53,10 +53,6 @@ export default function InvoiceMaker() {
       CostumerOrder
     }));
   };
-  // const handlesubmit = (e) =>{
-  //   e.preventDefault();
-  //   console.log(customerDetails)
-  // }
   const [prod, setprod] = useState([]);
   useEffect(() => {
     // Make a GET request to the backend API
@@ -212,7 +208,9 @@ export default function InvoiceMaker() {
                    <tr>
                           <td>
                           <input
+                          data
                           key={index}
+                          list="datalistOptions"
             className="form-control"
               type="text"
               name="name"
